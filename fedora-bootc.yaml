@@ -1,0 +1,32 @@
+# Documentation can be found here:
+# https://github.com/lima-vm/lima/blob/master/examples/default.yaml
+# https://lima-vm.io/docs/dev/internals/
+
+vmType: vz
+images:
+- location: "./output/image/disk.raw"
+  arch: "aarch64"
+mounts:
+# Mount $HOME to /var/myhome.  fedora-boot's root / is read-only, so mounting
+# $HOME would fail otherwise.  The documented LIMA_WORKDIR environment variable
+# does not seem to work, so users need to cd into /var/myhome for now.
+- location: "~"
+  mountPoint: "/var/myhome"
+  writable: true
+- location: "/tmp/lima"
+  writable: true
+
+# /usr/local/bin is read-only, so let's point it to /var/usrlocal/bin instead. 
+provision:
+- mode: boot
+  script: |
+    #!/bin/bash
+    set -eux -o pipefail
+    mkdir -p /var/usrlocal/bin
+env:
+  LIMA_CIDATA_GUEST_INSTALL_PREFIX: /var/usrlocal
+
+# Turn off containerd.
+containerd:
+  system: false
+  user: false
