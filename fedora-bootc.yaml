@@ -7,12 +7,7 @@ images:
 - location: "./output/image/disk.raw"
   arch: "aarch64"
 mounts:
-# Mount $HOME to /var/myhome.  fedora-boot's root / is read-only, so mounting
-# $HOME would fail otherwise.  The documented LIMA_WORKDIR environment variable
-# does not seem to work, so users need to cd into /var/myhome for now.
 - location: "~"
-  mountPoint: "/var/myhome"
-  writable: true
 - location: "/tmp/lima"
   writable: true
 
