@@ -22,4 +22,4 @@ $ limactl create fedora-bootc.yaml
 $ limactl start fedora-bootc
 ```
 
-Now you are ready to SSH into the container via `limactl shell fedora-bootc`.  The $HOME of your Mac user is mounted into `/var/myhome`.  Other Lima "templates" such as Fedora and Ubuntu mount the user's $HOME to `/Users/` but since bootc filesystem is read-only, we mount $HOME to the writable `/var`.
+Now you are ready to SSH into the container via `limactl shell fedora-bootc`.
