@@ -13,6 +13,8 @@ $ podman machine set --rootful
 $ podman machine start
 ```
 
+If you prefer running CentOS Stream, run `make DOCKERFILE=Dockerfile-centos-stream build-container-image`.
+
 ## Run a fedora-bootc VM
 To create and run a local fedora-bootc via Lima:
 ```bash

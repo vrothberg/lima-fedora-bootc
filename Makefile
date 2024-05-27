@@ -1,10 +1,11 @@
 LIMA_FEDORA_BOOTC_IMAGE=quay.io/fedora/bootc-lima:40
 BIB_IMAGE=quay.io/centos-bootc/bootc-image-builder:latest
 RAW_IMAGE=output/image/disk.raw
+DOCKERFILE=Dockerfile
 
 .PHONY: build-container-image
 build-container-image:
-	podman build -t ${LIMA_FEDORA_BOOTC_IMAGE} .
+	podman build -f ${DOCKERFILE} -t ${LIMA_FEDORA_BOOTC_IMAGE} .
 
 .PHONY: build-raw-image
 build-raw-image:

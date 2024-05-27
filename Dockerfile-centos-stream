@@ -1,0 +1,4 @@
+FROM quay.io/centos-bootc/centos-bootc:stream9
+RUN dnf install -y openssh-server cloud-init
+RUN systemctl enable sshd
+RUN ln -s /var /Users
